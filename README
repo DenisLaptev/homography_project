@@ -1,0 +1,98 @@
+------------------------------------Homography util
+
+1. task1_images 	= folder with materials on task1. In task1 homography-alignment is made only for 286,287,433,434,1353,1354,3061,3062 frames.
+2. task2_video		= folder with materials on task2. In task1 homography-alignment is made only for video (Frame_1331-Frame_1829).
+3. requirements.txt 	= file with dependencies used in this util.
+4. README	 	= this file.
+
+------------------------------------task1_images
+
+1-1. task.txt 		= file with tasks list from Yura.
+1-2. images	 	= folder with images for this task.
+1-3. solution1	 	= folder with script homography_solution1.py. In this script ORB feature detector is applied for the WHOLE image, 
+			homography is calculated and align of the second image is made.
+
+1-4. solution2	 	= folder with script homography_solution2.py. In this script ORB feature detector is applied for the MASKED image 
+			(only center of image is considered), homography is calculated and align of the second image is made.
+
+1-5. solution3_good_result_matching = folder with BEST solution for images.
+1-6. Avg		= folder results of averaged lanes probability maps.
+
+
+------------------------------------solution3_good_result_matching
+
+1-5-1. homography_solution3.py			= script where ORB feature detector is applied for the WHOLE image, homography is calculated and align of the second image is made.
+1-5-2. homography_solution3_with_maps.py	= script where ORB feature detector is applied for the WHOLE image, homography is calculated and align of the second image is made.
+						In this script alignment of lanes probability maps is made and then averaging with the maps from second image is made.
+						Results are saved to the folder "Avg" (1-6.)
+
+------------------------------------task2_video
+
+2-1. dataset_for_NN	= dataset of frames made from video (Frame_1331-Frame_1829). In these frames a car moves straight then turns to the right and then again moves straight.
+2-2. from_nn/images	= result obtained using pre-trained model with 
+			1)txt-files (x,y-coords of lanes); 
+			2)png-images of colored marked roads with lanes;
+			3)4 png-images (binary) of lane probability map;
+			4)txt-files indicating if corresponding lane exists or not.    
+
+2-3. solution1_images	=folder with application of homography alignment to finite number of frames (NOT necessary for final version of project).
+2-4. solution2_video	=folder with application of homography alignment to video. Script homography_and_video_solution2_video.py returns videos with homography-aligned frames and 				video showing the result of the ORB feature matching between 2 videos shifted by delta=1(=2) frames from each other. 
+
+2-5. solution3_video_edges = folder with application of homography alignment to video. Script homography_and_video_solution3_video_Edges.py 
+				returns videos with homography-aligned frames with Sobel and Canny Edges and video showing the result of the 
+				calculation of pixel-wise maximum and pixes-wise difference between 2 videos shifted by delta=1(=2) frames from each other. 
+
+2-6. solution4_video_lanes = folder with scripts working with colored lanes on the images (see description bellow).
+
+2-7. utils		 = folder with additional scripts (see description bellow).
+
+
+------------------------------------solution4_video_lanes
+ 
+2-6-1. make_video_with_colored_lanes.py		= script reads frame and 4 probability maps from folder "from_nn/images" (2-2.), colors maps of lanes, adds them to the frame 
+						and shows result video.
+
+2-6-2. make_video_with_AVERAGED_colored_lanes.py= script shows video with colored lanes on the frames. These colored lanes were obtained by averaging of the current and previous map.
+
+
+2-6-2. make_video_with_AVERAGED_colored_lanes.py= script shows video with colored lanes on the frames. 
+						These colored lanes were obtained by averaging of the current and HOMOGRAPHY-ALIGNED previous map.
+
+
+
+------------------------------------utils
+
+2-7-1. get_dataset_from_video_for_NN.py		=script makes dataset of frames (Frame_1331-Frame_1829) from video for neural network and saves it to the folder "dataset_for_NN" (2-1.)
+
+2-7-2. simple_launch_video.py			=script launces video (NOT necessary for final version of project).
+
+2-7-3. make_colored_lanes.py			=script makes colored probability maps and adds them to the frame (NOT necessary for final version of project).
+
+2-7-4. show_and_save_2_videos.py		=script shows and saves two concatenated videos.
+
+2-7-5. get_difference_between_two_videos.py	=script calulates and saves pixel-wise difference between two videos.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

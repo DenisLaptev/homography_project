@@ -1,0 +1,14 @@
+# Task:
+# In each pair of consecutive frames
+# align the first frame to the second one using homography.
+# After homography calculation align corresponding probability maps (1-4) in the same way,
+# then average each pair (aligned 1st map - original 2nd map)
+# and save as a new image file.
+
+# Deliverable:
+# code/function that takes as input two filenames in the certain folder,
+# returns 4 averaged probability maps
+# and saved in Avg directory with the same names as maps files of the second frame.
+
+# Idea:
+# get more robust predictions based on two consecutive frames.
